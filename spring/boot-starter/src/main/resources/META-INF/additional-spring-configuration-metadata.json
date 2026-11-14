@@ -1,0 +1,191 @@
+{
+  "groups": [
+    {
+      "name": "elasticjob.reg-center",
+      "type": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties",
+      "description": "Registry Center configurations."
+    },
+    {
+      "name": "elasticjob.tracing",
+      "description": "Event Trace configurations."
+    },
+    {
+      "name": "elasticjob.dump",
+      "description": "Snapshot service configurations."
+    }
+  ],
+  "properties": [
+    {
+      "name": "elasticjob.reg-center.type",
+      "type": "java.lang.String",
+      "defaultValue": "zookeeper",
+      "description": "Type of the registry center.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.server-lists",
+      "type": "java.lang.String",
+      "description": "Include IP addresses and ports. Multiple IP address split by comma.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.namespace",
+      "type": "java.lang.String",
+      "description": "Namespace. For the Nacos registry center this is mapped to the Nacos config group, not the Nacos tenant.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.base-sleep-time-milliseconds",
+      "type": "java.lang.Integer",
+      "defaultValue": 1000,
+      "description": "Base sleep time milliseconds.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.max-sleep-time-milliseconds",
+      "type": "java.lang.Integer",
+      "defaultValue": 3000,
+      "description": "Max sleep time milliseconds.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.max-retries",
+      "type": "java.lang.Integer",
+      "defaultValue": 3,
+      "description": "Max retry times.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.session-timeout-milliseconds",
+      "type": "java.lang.Integer",
+      "description": "Session timeout milliseconds.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.connection-timeout-milliseconds",
+      "type": "java.lang.Integer",
+      "description": "Connection timeout milliseconds.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.digest",
+      "type": "java.lang.String",
+      "description": "Zookeeper digest.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.ensemble-tracker",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "Whether to watch ZooKeeper ensemble configuration changes.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.username",
+      "type": "java.lang.String",
+      "description": "Authentication username.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.password",
+      "type": "java.lang.String",
+      "description": "Authentication password.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.ssl",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "Whether to use HTTPs.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.authority",
+      "type": "java.lang.String",
+      "description": "Authority header for HTTP/2.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.tenant",
+      "type": "java.lang.String",
+      "description": "Nacos tenant (namespace id), empty means public.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.reg-center.timeout-ms",
+      "type": "java.lang.Long",
+      "description": "Timeout milliseconds of Nacos config operations.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.RegistryCenterProperties"
+    },
+    {
+      "name": "elasticjob.tracing.type",
+      "type": "java.lang.String",
+      "description": "Type of Event Trace storage."
+    },
+    {
+      "name": "elasticjob.tracing.includeJobNames",
+      "type": "java.util.Set<java.lang.String>",
+      "description": "include the specific job.",
+      "defaultValue": null
+    },
+    {
+      "name": "elasticjob.tracing.excludeJobNames",
+      "type": "java.util.Set<java.lang.String>",
+      "description": "exclude the specific job.",
+      "defaultValue": null
+    },
+    {
+      "name": "elasticjob.jobs",
+      "type": "java.util.Map<java.lang.String,org.apache.shardingsphere.elasticjob.spring.boot.job.ElasticJobConfigurationProperties>"
+    },
+    {
+      "name": "elasticjob.dump.port",
+      "type": "java.lang.Integer",
+      "description": "A port for configuring SnapshotService.",
+      "sourceType": "org.apache.shardingsphere.elasticjob.spring.boot.reg.snapshot.SnapshotServiceProperties"
+    },
+    {
+      "name": "elasticjob.dump.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "Enable SnapshotService."
+    }
+  ],
+  "hints": [
+    {
+      "name": "elasticjob.reg-center.type",
+      "values": [
+        {
+          "value": "zookeeper",
+          "description": "Using Apache ZooKeeper as registry center."
+        },
+        {
+          "value": "etcd",
+          "description": "Using etcd3 as registry center."
+        },
+        {
+          "value": "nacos",
+          "description": "Using Nacos as registry center."
+        },
+        {
+          "value": "memory",
+          "description": "Using in-memory storage as registry center."
+        }
+      ]
+    },
+    {
+      "name": "elasticjob.tracing.type",
+      "values": [
+        {
+          "value": "RDB",
+          "description": "Using JDBC DataSource for Event Trace."
+        }
+      ]
+    },
+    {
+      "name": "elasticjob.jobs.keys",
+      "values": [
+      ]
+    }
+  ]
+}

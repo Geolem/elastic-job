@@ -1,0 +1,23 @@
+{
+  "rules": [
+    {"includeClasses": "**"},
+
+    {"excludeClasses": "android.**"},
+    {"excludeClasses": "ch.**"},
+    {"excludeClasses": "com.**"},
+    {"excludeClasses": "io.**"},
+    {"excludeClasses": "java.**"},
+    {"excludeClasses": "javax.**"},
+    {"excludeClasses": "jdk.**"},
+    {"excludeClasses": "kotlinx.**"},
+    {"excludeClasses": "org.**"},
+    {"excludeClasses": "sun.**"},
+
+    {"includeClasses": "java.util.Properties"},
+    {"includeClasses": "org.apache.shardingsphere.elasticjob.**"},
+
+    {"excludeClasses": "org.apache.shardingsphere.elasticjob.test.natived.**"}
+  ],
+  "regexRules": [
+  ]
+}

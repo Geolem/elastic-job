@@ -1,3 +1,135 @@
+## 3.0.6-SNAPSHOT
+
+### API Changes
+
+1. Spring Boot Starter: Rename `ZookeeperProperties` to `RegistryCenterProperties`, the registry center type is selected by the new `elasticjob.reg-center.type` property - [#2554](https://github.com/apache/shardingsphere-elasticjob/pull/2554)
+1. Kernel: Adds the `maxWaitMillis` option, which bounds how long the sharding and leader election wait loops block, to `JobConfiguration` and to the YAML, Spring Boot, Spring Namespace and annotation configurations - [#2546](https://github.com/apache/shardingsphere-elasticjob/pull/2546)
+
+### Enhancements
+
+1. Build: Support building and using ElasticJob with JDK25 - [#2518](https://github.com/apache/shardingsphere-elasticjob/pull/2518)
+1. Build: Bump the JDK requirement for build time from JDK 8 to JDK 17 - [#2509](https://github.com/apache/shardingsphere-elasticjob/issues/2509)
+1. Build: Supports building ElasticJob GraalVM Native Images via GraalVM CE `25.0.2` - [#2520](https://github.com/apache/shardingsphere-elasticjob/pull/2520)
+1. Registry Center: Support etcd as a registry center - [#2221](https://github.com/apache/shardingsphere-elasticjob/issues/2221)
+1. Registry Center: Supports Nacos and in-memory storage as the registry center - [#2436](https://github.com/apache/shardingsphere-elasticjob/issues/2436)
+1. Spring: Spring Boot Starter and Spring Namespace support etcd, Nacos and in-memory registry centers - [#2548](https://github.com/apache/shardingsphere-elasticjob/pull/2548)
+1. Annotation: Complete Annotation Job support - [#1445](https://github.com/apache/shardingsphere-elasticjob/issues/1445)
+
+### Bug Fixes
+
+1. Kernel: Fixes the issue that the distributed once listener loops forever when the registration is not confirmed by the registry center - [#2543](https://github.com/apache/shardingsphere-elasticjob/issues/2543)
+1. Kernel: Fixes the issue that the trigger flag is removed before the job is triggered - [#2543](https://github.com/apache/shardingsphere-elasticjob/issues/2543)
+1. Kernel: Fixes the issues that a job keeps running or throws an exception after it is shut down or its configuration is removed - [#2549](https://github.com/apache/shardingsphere-elasticjob/issues/2549)
+1. Kernel: Fixes the issue that the sharding and leader election wait loops block indefinitely when the registry center never clears the awaited state - [#2546](https://github.com/apache/shardingsphere-elasticjob/pull/2546)
+1. Registry Center: Fixes the issue that the etcd registry center returns incorrect child keys under a nested path - [#2538](https://github.com/apache/shardingsphere-elasticjob/issues/2538)
+1. Registry Center: Fixes the issue that the etcd registry center does not report the root path as existed - [#2538](https://github.com/apache/shardingsphere-elasticjob/issues/2538)
+1. Registry Center: Fixes the issue that the etcd registry center does not revoke the lease created by leader execution - [#2538](https://github.com/apache/shardingsphere-elasticjob/issues/2538)
+1. Registry Center: Fixes the issue that a closed `ZookeeperRegistryCenter` throws an exception instead of returning the not found value on read - [#2543](https://github.com/apache/shardingsphere-elasticjob/issues/2543)
+1. Registry Center: Fixes the issue that `ZookeeperRegistryCenter` throws a null pointer exception when watching a path without cache - [#2543](https://github.com/apache/shardingsphere-elasticjob/issues/2543)
+1. Registry Center: Fixes registry center closed-client reads and nested interrupts - [#2551](https://github.com/apache/shardingsphere-elasticjob/pull/2551)
+1. Registry Center: Fixes closed-client reads and listener removal on `NacosRegistryCenter` close - [#2553](https://github.com/apache/shardingsphere-elasticjob/pull/2553)
+1. Registry Center: Skips revoking already expired leases when closing `EtcdRegistryCenter` - [#2560](https://github.com/apache/shardingsphere-elasticjob/pull/2560)
+1. Spring: Shuts down scheduled job bootstraps gracefully when the Spring application context closes - [#2548](https://github.com/apache/shardingsphere-elasticjob/pull/2548)
+1. Spring: Fixes the issue that `@ElasticJobScan` skips bootstrap registration when the job bean is already registered by component scanning - [#2559](https://github.com/apache/shardingsphere-elasticjob/pull/2559)
+
+## 3.0.5
+
+### CVE
+
+1. Fix CVE-2025-25193, CVE-2024-47535 [#2498](https://github.com/apache/shardingsphere-elasticjob/pull/2498)
+1. Fix CVE-2024-22259 [#2500](https://github.com/apache/shardingsphere-elasticjob/pull/2500)
+
+### API Changes
+
+1. Kernel: Refactor of the way Lambda job classes are identified - [#2370](https://github.com/apache/shardingsphere-elasticjob/issues/2370)
+
+### New Features
+
+1. Bootstrap: Provides built-in GraalVM Reachability Metadata and nativeTest on Elasticjob Bootstrap - [#2268](https://github.com/apache/shardingsphere-elasticjob/pull/2268)
+1. Lifecycle: Support dynamic configuration of jobs through the Operation API in GraalVM Native Image - [#2426](https://github.com/apache/shardingsphere-elasticjob/pull/2426)
+1. Registry Center: Allows to skip Ensemble Tracker for ZookeeperConfiguration to allow connecting to HA enabled Zookeeper clusters in Kubernetes - [#2072](https://github.com/apache/shardingsphere-elasticjob/issues/2072)
+
+### Enhancements
+
+1. Build: Support for building with OpenJDK 22 - [#2407](https://github.com/apache/shardingsphere-elasticjob/issues/2407)
+1. Spring Boot Starter: Block `elasticjob-spring-boot-starter` from passing `spring-boot-starter` test scope dependencies - [#2418](https://github.com/apache/shardingsphere-elasticjob/issues/2418)
+1. Doc: Adds documentation for connecting to Zookeeper Server with SASL enabled - [#2442](https://github.com/apache/shardingsphere-elasticjob/pull/2442)
+1. Dependencies: Bump Quartz to 2.4.0 - [#2439](https://github.com/apache/shardingsphere-elasticjob/issues/2439)
+1. Build: Support building and using ElasticJob with JDK23 - [#2453](https://github.com/apache/shardingsphere-elasticjob/issues/2453)
+1. Build: Support building and using ElasticJob with JDK24 - [#2481](https://github.com/apache/shardingsphere-elasticjob/pull/2481)
+1. Tracing: Support GaussDB as an RDB tracing storage database - [#2472](https://github.com/apache/shardingsphere-elasticjob/pull/2472)
+1. Kernel: Add the `SINGLE_SHARDING_BALANCE` job sharding strategy - [#2462](https://github.com/apache/shardingsphere-elasticjob/pull/2462)
+1. Spring Boot Starter: Improve tracing properties configuration - [#2438](https://github.com/apache/shardingsphere-elasticjob/pull/2438)
+1. Kernel: Support graceful exit when business-code capture is interrupted during shutdown - [#2475](https://github.com/apache/shardingsphere-elasticjob/pull/2475)
+
+### Bug Fixes
+
+1. Build: Removes non-existent `elasticjob-tracing-api` and `elasticjob-error-handler-spi` module - [#2412](https://github.com/apache/shardingsphere-elasticjob/pull/2412)
+1. Spring Boot Starter: Fixes the issue that OneOffJobBootstrap cannot be used under ElasticJob Spring Boot Starter - [#2014](https://github.com/apache/shardingsphere-elasticjob/issues/2014)
+1. Spring: Fixes potential conflict in AOP proxy job class identification in Spring Framework - [#2012](https://github.com/apache/shardingsphere-elasticjob/issues/2012)
+1. Kernel: Fixes failover behavior that could leave a job unexecuted - [#2432](https://github.com/apache/shardingsphere-elasticjob/pull/2432)
+1. Kernel: Fixes removal of offline job servers - [#2445](https://github.com/apache/shardingsphere-elasticjob/pull/2445)
+1. Spring Boot Starter: Closes the Zookeeper registry center bean on destruction - [#2441](https://github.com/apache/shardingsphere-elasticjob/pull/2441)
+1. Spring Boot Starter: Fixes tracing compatibility with Spring Boot 3.2.x - [#2405](https://github.com/apache/shardingsphere-elasticjob/pull/2405)
+
+### Change Logs
+
+1. [MILESTONE](https://github.com/apache/shardingsphere-elasticjob/milestone/7)
+
+## 3.0.4
+
+### Dependencies Upgrade
+1. Update dependencies to fix CVE
+
+### Enhancements
+1. Support for building with OpenJDK 21
+2. Accelerate the startup speed of ElasticJob
+3. Migrate from Junit Vintage to Junit Jupiter
+
+### Change Logs
+
+1. [MILESTONE 3.0.4](https://github.com/apache/shardingsphere-elasticjob/milestone/9)
+
+
+## 3.0.3
+
+### Bug Fixes
+
+1. Job class conflict error caused by empty String
+1. Possible NPE in LegacyCrashedRunningItemListener
+1. Possible NPE in InstanceService.getAvailableJobInstances
+1. Job listeners configured in local configuration were used even if overwrite=false
+
+### Enhancements
+
+1. Add new job dump method in JobOperateAPI
+1. Avoid once listener invoke multi times
+
+### Change Logs
+
+1. [MILESTONE 3.0.3](https://github.com/apache/shardingsphere-elasticjob/milestone/8)
+
+
+## 3.0.2
+
+### Bug Fixes
+
+1. Fix itemErrorMessages not cleared after job finished.
+1. Fix Curator notify thread may be blocked and avoid probably endless loop in ServerService.
+1. NPE occur when job instance could not be unmarshalled.
+1. Fix failover too sensitive.
+
+### Enhancements
+
+1. Script Job exception's stack was ignored.
+1. Support using different event trace data source when using Spring Boot.
+1. Supports building project by Java 19.
+
+### Change Logs
+
+1. [MILESTONE 3.0.2](https://github.com/apache/shardingsphere-elasticjob/milestone/5)
+
+
 ## 3.0.1
 
 ### Enhancements
